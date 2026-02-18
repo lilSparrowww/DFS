@@ -1,0 +1,50 @@
+# 🌳 100. Same Tree
+
+🔗 LeetCode Link: https://leetcode.com/problems/same-tree/
+
+---
+
+## 📌 Problem Summary
+
+Given the roots of two binary trees `p` and `q`, check if they are **identical**.
+
+Two trees are the same if:
+- They have the same structure  
+- They have the same values at each node  
+
+---
+
+## 🧠 Core Idea
+
+Use **recursion (DFS)** to compare:
+
+Root → Left subtree → Right subtree
+
+---
+
+### ✅ Base Cases
+
+| Condition | Result |
+|----------|--------|
+| Both nodes are `null` | `true` |
+| One is `null` | `false` |
+| Values differ | `false` |
+
+---
+
+## ✅ Recursive Java Solution
+
+```java
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+
+        if (p == null && q == null) return true;
+
+        if (p == null || q == null) return false;
+
+        if (p.val != q.val) return false;
+
+        return isSameTree(p.left, q.left) &&
+               isSameTree(p.right, q.right);
+    }
+}
