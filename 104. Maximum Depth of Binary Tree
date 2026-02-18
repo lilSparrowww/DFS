@@ -1,0 +1,41 @@
+# 🌳 104. Maximum Depth of Binary Tree
+
+🔗 LeetCode Link: https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+---
+
+## 📌 Problem Summary
+
+Given the root of a binary tree, return its **maximum depth**.
+
+Maximum depth = number of nodes on the longest path from root to a leaf.
+
+---
+
+## 🧠 Core Idea — Postorder Recursion
+
+For each node:
+
+depth = 1 + max(left depth, right depth)
+
+Why?
+- Left subtree has its own height
+- Right subtree has its own height
+- Take the bigger one and add current node
+
+---
+
+## ✅ Recursive Java Solution
+
+```java
+class Solution {
+    public int maxDepth(TreeNode root) {
+
+        if (root == null) return 0;
+
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+
+        return 1 + Math.max(left, right);
+    }
+}
